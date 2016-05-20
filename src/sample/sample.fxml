@@ -1,8 +1,15 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<GridPane fx:controller="sample.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Label prefHeight="55.0" prefWidth="600.0" styleClass="header" stylesheets="@Style.css" />
+      <Button fx:id="button" layoutX="517.0" layoutY="311.0" mnemonicParsing="false" onAction="#goForward" styleClass="btn" stylesheets="@Style.css" text="далее" />
+      <Label layoutX="14.0" layoutY="158.0" prefHeight="25.0" prefWidth="122.0" text="Выбеите город:" />
+      <ComboBox fx:id="sides" layoutX="14.0" layoutY="189.0" onAction="#changeSide" prefWidth="150.0" styleClass="combo" stylesheets="@Style.css" />
+      <Label layoutX="14.0" layoutY="63.0" prefHeight="25.0" prefWidth="88.0" text="Регион:" />
+      <ComboBox disable="true" layoutX="14.0" layoutY="94.0" prefWidth="150.0" promptText="Амурская область" styleClass="combo" stylesheets="@Style.css" />
+   </children>
+</AnchorPane>

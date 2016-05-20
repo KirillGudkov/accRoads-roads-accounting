@@ -1,0 +1,17 @@
+.header {
+    -fx-min-width: 100%;
+    -fx-min-height: 55px;
+    -fx-background-color: #336699;
+}
+.btn {
+    -fx-min-height: 30px;
+    -fx-min-width: 70px;
+    -fx-background-color: #6699FF;
+}
+.btn:hover {
+    -fx-background-color: #0066FF;
+}
+.combo {
+    -fx-mark-color:  #ffffff;
+    -fx-background-color: #6699FF;
+}
