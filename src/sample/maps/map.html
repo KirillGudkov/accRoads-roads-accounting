@@ -10,26 +10,119 @@
     <script type="text/javascript"
             src="https://maps.googleapis.com/maps/api/js?key= AIzaSyAsUSk1yHDhFze7QBgxhZmel0x5b3CiEWk&sensor=false">
     </script>
+    <script src="../maps/js/gmaps.js"></script>
     <script type="text/javascript">
-        var map;
-        var marker;
+        function getSide() {
 
-        function initialize() {
-            var defLatLng = new google.maps.LatLng(59.95632093391832, 30.309906005859375);
-            var mapOptions = {
-                center: defLatLng,
-                zoom: 11,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
+        }
+
+        function initialize (var side) {
+            var map = new GMaps({
+                el: '#map_canvas',
+                lat: -12.043333,
+                lng: -77.028333,
                 disableDefaultUI: true,
-                panControl: false
-            };
-            map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+                panControl: false,
 
-            marker = new google.maps.Marker({
-                position: defLatLng,
-                map: map,
-                icon: "img/Pin.png"
+
+                click: function(e) {
+                    var myLocate = e.latLng;
+                    map.removeMarker({
+                        name: "marker"
+                    });
+                    map.addMarker({
+                        position: myLocate,
+                        name: "marker",
+                        title: "myMarker",
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        infoWindow: {
+                            content: '<p>content</p>'
+                        }
+                    })
+                }
             });
+        }
+
+//        var map;
+//        var marker;
+//
+//        function initialize() {
+//            var blg = {lat: 50.258375, lng: 127.542646};
+//            var defLatLng = new google.maps.LatLng(blg);
+//            var mapOptions = {
+//                center: blg,
+//                zoom: 11,
+//                mapTypeId: google.maps.MapTypeId.ROADMAP,
+//                disableDefaultUI: false,
+//                panControl: true
+//            };
+//            map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+//            google.maps.event.addListener(map, 'click', get_click_position);
+//
+//            marker = new google.maps.Marker({
+//                position: blg,
+//                map: map,
+//                title: 'you here'
+//            });
+//
+//            app.handle(0, 0);
+//        }
+
+        function get_click_position(event){
+            var location = event.latLng;
+            var lat = location.lat();
+            var lng = location.lng();
+            app.handle(lat, lng);
+        }
+
+        function setMarkerPosition(lat, lng) {
+            var clickLatLng = new google.maps.LatLng(lat, lng);
+            marker.setPosition(clickLatLng);
+        }
+
+        function startJumping(){
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+
+        function stopJumping(){
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+
+        function setMapCenter(lat, lng) {
+            var latlng = new google.maps.LatLng(lat, lng);
+            map.setCenter(latlng);
+        }
+
+        function switchSatellite() {
+            var mapOptions = {
+                mapTypeId: google.maps.MapTypeId.SATELLITE
+            };
+            map.setOptions(mapOptions);
+            setLightMarkerIcon();
+        }
+
+        function switchRoadmap() {
+            var mapOptions = {
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map.setOptions(mapOptions);
+            setDarkMarkerIcon();
+        }
+
+        function switchHybrid() {
+            var mapOptions = {
+                mapTypeId: google.maps.MapTypeId.HYBRID
+            };
+            map.setOptions(mapOptions);
+            setLightMarkerIcon();
+        }
+
+        function switchTerrain() {
+            var mapOptions = {
+                mapTypeId: google.maps.MapTypeId.TERRAIN
+            };
+            map.setOptions(mapOptions);
+            setDarkMarkerIcon();
         }
     </script>
 </head>

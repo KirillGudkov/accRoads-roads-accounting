@@ -15,3 +15,6 @@
     -fx-mark-color:  #ffffff;
     -fx-background-color: #6699FF;
 }
+.textField {
+    -fx-border-radius: 0px;
+}

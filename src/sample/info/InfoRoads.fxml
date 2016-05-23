@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.info.InfoRoads">
+   <children>
+      <Button fx:id="btnForward" layoutX="516.0" layoutY="304.0" mnemonicParsing="false" onAction="#goForward" prefHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@../Style.css" text="далее" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Light" size="15.0" />
+         </font>
+      </Button>
+      <Label prefHeight="55.0" prefWidth="600.0" styleClass="header" stylesheets="@../Style.css" />
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="304.0" mnemonicParsing="false" onAction="#goBack" prefHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@../Style.css" text="назад" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Light" size="15.0" />
+         </font>
+      </Button>
+      <Label fx:id="side" layoutX="14.0" layoutY="12.0" prefHeight="32.0" prefWidth="384.0" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Light" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="76.0" prefHeight="24.0" prefWidth="264.0" text="Техническое состояние дорожного полотна:">
+         <font>
+            <Font name="Segoe UI Light" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="153.0" prefHeight="24.0" prefWidth="264.0" text="Дата начала последнего ремонта:">
+         <font>
+            <Font name="Segoe UI Light" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="194.0" prefHeight="24.0" prefWidth="264.0" text="Дата окончанияпоследнего ремонта:">
+         <font>
+            <Font name="Segoe UI Light" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="114.0" prefHeight="24.0" prefWidth="277.0" text="Косметическое состояние дорожного полотна:">
+         <font>
+            <Font name="Segoe UI Light" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="231.0" prefHeight="24.0" prefWidth="264.0" text="Статус на текущий момент:">
+         <font>
+            <Font name="Segoe UI Light" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="technicalCondition" layoutX="309.0" layoutY="76.0" prefHeight="24.0" prefWidth="277.0">
+         <font>
+            <Font name="Segoe UI Light" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="cosmeticCondition" layoutX="309.0" layoutY="114.0" prefHeight="24.0" prefWidth="277.0">
+         <font>
+            <Font name="Segoe UI Light" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="dateBegin" layoutX="309.0" layoutY="153.0" prefHeight="24.0" prefWidth="277.0">
+         <font>
+            <Font name="Segoe UI Light" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="dateEnd" layoutX="309.0" layoutY="194.0" prefHeight="24.0" prefWidth="277.0">
+         <font>
+            <Font name="Segoe UI Light" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="status" layoutX="309.0" layoutY="231.0" prefHeight="24.0" prefWidth="277.0">
+         <font>
+            <Font name="Segoe UI Light" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

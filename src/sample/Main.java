@@ -14,7 +14,8 @@ public class Main extends Application {
         fxmlLoader.setLocation(getClass().getResource("sample.fxml"));
         Parent root = fxmlLoader.load();
         primaryStage.setTitle("Road Accounting");
-        primaryStage.setScene(new Scene(root, 600, 350));
+        primaryStage.setScene(new Scene(root, 590, 350));
+        primaryStage.setResizable(false);
         Controller controller = fxmlLoader.getController();
         controller.setStage(primaryStage);
         primaryStage.show();
