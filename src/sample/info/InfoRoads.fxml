@@ -5,50 +5,50 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.info.InfoRoads">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.info.InfoRoads">
    <children>
-      <Button fx:id="btnForward" layoutX="516.0" layoutY="304.0" mnemonicParsing="false" onAction="#goForward" prefHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@../Style.css" text="далее" textFill="WHITE">
+      <Button fx:id="btnForward" layoutX="816.0" layoutY="454.0" mnemonicParsing="false" onAction="#goForward" prefHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@../Style.css" text="далее" textFill="WHITE">
          <font>
             <Font name="Segoe UI Light" size="15.0" />
          </font>
       </Button>
-      <Label prefHeight="55.0" prefWidth="600.0" styleClass="header" stylesheets="@../Style.css" />
-      <Button fx:id="btnBack" layoutX="14.0" layoutY="304.0" mnemonicParsing="false" onAction="#goBack" prefHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@../Style.css" text="назад" textFill="WHITE">
+      <Label prefHeight="70.0" prefWidth="900.0" styleClass="header" stylesheets="@../Style.css" />
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="454.0" mnemonicParsing="false" onAction="#goBack" prefHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@../Style.css" text="назад" textFill="WHITE">
          <font>
             <Font name="Segoe UI Light" size="15.0" />
          </font>
       </Button>
-      <Label fx:id="side" layoutX="14.0" layoutY="12.0" prefHeight="32.0" prefWidth="384.0" textFill="WHITE">
+      <Label fx:id="side" alignment="CENTER_RIGHT" layoutX="-1.0" layoutY="14.0" prefHeight="49.0" prefWidth="893.0" textAlignment="RIGHT" textFill="WHITE">
          <font>
-            <Font name="Segoe UI Light" size="23.0" />
+            <Font name="Segoe UI Light" size="33.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="76.0" prefHeight="24.0" prefWidth="264.0" text="Техническое состояние дорожного полотна:">
-         <font>
-            <Font name="Segoe UI Light" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="14.0" layoutY="153.0" prefHeight="24.0" prefWidth="264.0" text="Дата начала последнего ремонта:">
+      <Label layoutX="14.0" layoutY="89.0" prefHeight="24.0" prefWidth="264.0" text="Техническое состояние дорожного полотна:">
          <font>
             <Font name="Segoe UI Light" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="194.0" prefHeight="24.0" prefWidth="264.0" text="Дата окончанияпоследнего ремонта:">
+      <Label layoutX="14.0" layoutY="165.0" prefHeight="24.0" prefWidth="264.0" text="Дата начала последнего ремонта:">
          <font>
             <Font name="Segoe UI Light" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="114.0" prefHeight="24.0" prefWidth="277.0" text="Косметическое состояние дорожного полотна:">
+      <Label layoutX="14.0" layoutY="201.0" prefHeight="24.0" prefWidth="264.0" text="Дата окончанияпоследнего ремонта:">
          <font>
             <Font name="Segoe UI Light" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="231.0" prefHeight="24.0" prefWidth="264.0" text="Статус на текущий момент:">
+      <Label layoutX="14.0" layoutY="126.0" prefHeight="24.0" prefWidth="277.0" text="Косметическое состояние дорожного полотна:">
          <font>
             <Font name="Segoe UI Light" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="technicalCondition" layoutX="309.0" layoutY="76.0" prefHeight="24.0" prefWidth="277.0">
+      <Label layoutX="14.0" layoutY="238.0" prefHeight="24.0" prefWidth="264.0" text="Статус на текущий момент:">
+         <font>
+            <Font name="Segoe UI Light" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="technicalCondition" layoutX="309.0" layoutY="82.0" prefHeight="24.0" prefWidth="277.0">
          <font>
             <Font name="Segoe UI Light" size="13.0" />
          </font>
@@ -73,5 +73,37 @@
             <Font name="Segoe UI Light" size="13.0" />
          </font>
       </Label>
+      <Label layoutX="14.0" layoutY="275.0" prefHeight="24.0" prefWidth="264.0" text="Затрачено средств:">
+         <font>
+            <Font name="Segoe UI Light" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="money" layoutX="309.0" layoutY="268.0" prefHeight="24.0" prefWidth="277.0">
+         <font>
+            <Font name="Segoe UI Light" size="13.0" />
+         </font>
+      </Label>
+      <MenuBar id="menu" prefHeight="25.0" prefWidth="600.0" styleClass="menu" stylesheets="@../Style.css">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Выбрать другой участок дороги" />
+               <MenuItem mnemonicParsing="false" text="Добавить дорогу" />
+               <MenuItem mnemonicParsing="false" text="Удалить дорогу" />
+               <MenuItem mnemonicParsing="false" text="Изменить статус" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>

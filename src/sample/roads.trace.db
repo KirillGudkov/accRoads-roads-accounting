@@ -546,3 +546,6 @@ SELECT CROSSING.STATUS, CROSSING.DATE_BEGIN_OF_REPAIRS, CROSSING.DATE_END_OF_REP
 	at com.sun.glass.ui.win.WinApplication.lambda$null$141(WinApplication.java:102)
 	at com.sun.glass.ui.win.WinApplication$$Lambda$38/524243536.run(Unknown Source)
 	at java.lang.Thread.run(Thread.java:745)
+05-24 01:35:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Объект уже закрыт
+The object is already closed [90007-176]

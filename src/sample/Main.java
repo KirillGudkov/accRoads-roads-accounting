@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -15,6 +16,7 @@ public class Main extends Application {
         Parent root = fxmlLoader.load();
         primaryStage.setTitle("Road Accounting");
         primaryStage.setScene(new Scene(root, 590, 350));
+        primaryStage.getIcons().add(new Image("file:resources/road-512.png"));
         primaryStage.setResizable(false);
         Controller controller = fxmlLoader.getController();
         controller.setStage(primaryStage);

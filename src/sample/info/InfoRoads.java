@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import sample.Controller;
 import sample.DBConnection.DBConnection;
-
 import java.sql.ResultSet;
 
 /**
@@ -33,6 +32,8 @@ public class InfoRoads {
     private Label dateEnd;
     @FXML
     private Label status;
+    @FXML
+    private Label money;
 
     /**
      * @param stage
@@ -72,15 +73,17 @@ public class InfoRoads {
     public void showInfo () throws Exception{
         DBConnection dbConnection = new DBConnection();
         ResultSet result = dbConnection.sendRequest(street, part1, part2);
-        dbConnection.closeConnection();
-        side.setText(street);
+
+        side.setText("ул."+street+": "+"от ул."+part1+" до ул."+part2);
         while (result.next()) {
             technicalCondition.setText(result.getString("TECHNICAL_CONDITION"));
             cosmeticCondition.setText(result.getString("COSMETIC_CONDITION"));
             dateBegin.setText(result.getString("DATE_BEGIN_OF_REPAIRS"));
             dateEnd.setText(result.getString("DATE_END_OF_REPAIRS"));
             status.setText(result.getString("STATUS"));
+            money.setText(result.getString("SPENT_MONEY")+" рублей");
         }
+        dbConnection.closeConnection();
     }
     /**
      *

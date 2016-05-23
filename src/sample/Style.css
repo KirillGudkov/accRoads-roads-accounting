@@ -18,3 +18,23 @@
 .textField {
     -fx-border-radius: 0px;
 }
+.menu .label {
+    -fx-text-fill: white;
+    -fx-font: "Segoe UI Light";
+
+}
+
+.menu-bar {
+    -fx-background-color: rgba(0,0,0,0);
+}
+.menu:showing {
+     -fx-background-color: rgba(0,0,0,0.1);
+ }
+.menu:showing .label{
+    -fx-background-color: rgba(0,0,0,0);
+    -fx-text-fill: white;
+    -fx-font: "Segoe UI Light";
+}
+.context-menu {
+    -fx-background-color: #336699;
+}
