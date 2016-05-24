@@ -549,3 +549,121 @@ SELECT CROSSING.STATUS, CROSSING.DATE_BEGIN_OF_REPAIRS, CROSSING.DATE_END_OF_REP
 05-24 01:35:17 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLException: Объект уже закрыт
 The object is already closed [90007-176]
+05-25 02:11:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Нет данных
+No data is available [2000-176]
+05-25 02:13:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Нет данных
+No data is available [2000-176]
+05-25 02:15:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Нет данных
+No data is available [2000-176]
+05-25 02:18:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Нет данных
+No data is available [2000-176]
+05-25 02:22:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Нет данных
+No data is available [2000-176]
+05-25 02:23:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Нет данных
+No data is available [2000-176]
+05-25 02:28:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Нет данных
+No data is available [2000-176]
+05-25 02:30:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Нет данных
+No data is available [2000-176]
+05-25 02:35:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Столбец "SPENT_MONEY рублей" не найден
+Column "SPENT_MONEY рублей" not found [42122-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3122)
+	at org.h2.jdbc.JdbcResultSet.get(JdbcResultSet.java:3210)
+	at org.h2.jdbc.JdbcResultSet.getString(JdbcResultSet.java:304)
+	at sample.info.InfoRoads$2.run(InfoRoads.java:232)
+	at java.lang.Thread.run(Thread.java:745)
+05-25 02:36:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Столбец "SPENT_MONEY рублей" не найден
+Column "SPENT_MONEY рублей" not found [42122-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3122)
+	at org.h2.jdbc.JdbcResultSet.get(JdbcResultSet.java:3210)
+	at org.h2.jdbc.JdbcResultSet.getString(JdbcResultSet.java:304)
+	at sample.info.InfoRoads$2.run(InfoRoads.java:232)
+	at java.lang.Thread.run(Thread.java:745)
+05-25 02:48:51 jdbc[4]: null
+org.h2.message.DbException: Незакрытое приложением соединение уничтожено сборщиком мусора
+The connection was not closed by the application and is garbage collected [90018-176]
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.message.DbException.get(DbException.java:143)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:173)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:91)
+	at org.h2.Driver.connect(Driver.java:74)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at sample.DBConnection.DBConnection.createConnection(DBConnection.java:28)
+	at sample.info.InfoRoads$2.run(InfoRoads.java:208)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.h2.jdbc.JdbcSQLException: Незакрытое приложением соединение уничтожено сборщиком мусора
+The connection was not closed by the application and is garbage collected [90018-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	... 12 more
+05-25 03:06:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Набор записей не является прокручиваемым. Возможно необходимо использовать conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ..).
+The result set is not scrollable and can not be reset. You may need to use conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ..). [90128-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.message.DbException.get(DbException.java:143)
+	at org.h2.jdbc.JdbcResultSet.resetResult(JdbcResultSet.java:3242)
+	at org.h2.jdbc.JdbcResultSet.absolute(JdbcResultSet.java:2819)
+	at org.h2.jdbc.JdbcResultSet.relative(JdbcResultSet.java:2852)
+	at org.h2.jdbc.JdbcResultSet.previous(JdbcResultSet.java:2870)
+	at sample.info.InfoRoads$2.run(InfoRoads.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+05-25 03:06:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Набор записей не является прокручиваемым. Возможно необходимо использовать conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ..).
+The result set is not scrollable and can not be reset. You may need to use conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ..). [90128-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.message.DbException.get(DbException.java:143)
+	at org.h2.jdbc.JdbcResultSet.resetResult(JdbcResultSet.java:3242)
+	at org.h2.jdbc.JdbcResultSet.absolute(JdbcResultSet.java:2819)
+	at org.h2.jdbc.JdbcResultSet.relative(JdbcResultSet.java:2852)
+	at org.h2.jdbc.JdbcResultSet.previous(JdbcResultSet.java:2870)
+	at sample.info.InfoRoads$2.run(InfoRoads.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+05-25 03:06:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Набор записей не является прокручиваемым. Возможно необходимо использовать conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ..).
+The result set is not scrollable and can not be reset. You may need to use conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ..). [90128-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.message.DbException.get(DbException.java:143)
+	at org.h2.jdbc.JdbcResultSet.resetResult(JdbcResultSet.java:3242)
+	at org.h2.jdbc.JdbcResultSet.absolute(JdbcResultSet.java:2819)
+	at org.h2.jdbc.JdbcResultSet.relative(JdbcResultSet.java:2852)
+	at org.h2.jdbc.JdbcResultSet.previous(JdbcResultSet.java:2870)
+	at sample.info.InfoRoads$2.run(InfoRoads.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+05-25 03:10:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Набор записей не является прокручиваемым. Возможно необходимо использовать conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ..).
+The result set is not scrollable and can not be reset. You may need to use conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ..). [90128-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.message.DbException.get(DbException.java:143)
+	at org.h2.jdbc.JdbcResultSet.resetResult(JdbcResultSet.java:3242)
+	at org.h2.jdbc.JdbcResultSet.first(JdbcResultSet.java:2773)
+	at sample.info.InfoRoads$2.run(InfoRoads.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+05-25 03:14:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Нет данных
+No data is available [2000-176]

@@ -14,8 +14,7 @@
 
 .menu .label {
     -fx-text-fill: white;
-    -fx-font: "Segoe UI Light";
-
+    -fx-font-size: 11px;
 }
 .menu-bar {
     -fx-background-color: rgba(0,0,0,0);
@@ -26,7 +25,6 @@
 .menu:showing .label{
     -fx-background-color: rgba(0,0,0,0);
     -fx-text-fill: white;
-    -fx-font: "Segoe UI Light";
 }
 .context-menu {
     -fx-background-color: #336699;

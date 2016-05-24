@@ -5,36 +5,37 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <children>
-      <Label prefHeight="55.0" prefWidth="600.0" styleClass="header" stylesheets="@Style.css" />
-      <Button fx:id="firstBtn" layoutX="472.0" layoutY="161.0" mnemonicParsing="false" onAction="#go" prefHeight="42.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@Style.css" text="далее" textFill="WHITE">
-         <font>
-            <Font name="Segoe UI Light" size="15.0" />
-         </font></Button>
-      <TextField fx:id="street" layoutX="59.0" layoutY="161.0" prefHeight="42.0" prefWidth="401.0" promptText="Введите название улицы..." styleClass="textField" stylesheets="@Style.css">
-         <font>
-            <Font name="Segoe UI Light" size="19.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="part1" layoutX="-413.0" layoutY="133.0" prefHeight="42.0" prefWidth="401.0" promptText="Укажите границы участка дороги..." styleClass="textField" stylesheets="@Style.css">
-         <font>
-            <Font name="Segoe UI Light" size="19.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="part2" layoutX="-413.0" layoutY="190.0" prefHeight="42.0" prefWidth="401.0" promptText="Укажите границы участка дороги..." styleClass="textField" stylesheets="@Style.css">
-         <font>
-            <Font name="Segoe UI Light" size="19.0" />
-         </font>
-      </TextField>
-      <Button fx:id="finalBtn" layoutX="-82.0" layoutY="241.0" mnemonicParsing="false" onAction="#goForward" prefHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@Style.css" text="далее" textFill="WHITE">
-         <font>
-            <Font name="Segoe UI Light" size="15.0" />
-         </font>
-      </Button>
-      <Button fx:id="prev" layoutX="-159.0" layoutY="241.0" mnemonicParsing="false" onAction="#prev" prefHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@Style.css" text="назад" textFill="WHITE">
-         <font>
-            <Font name="Segoe UI Light" size="15.0" />
-         </font>
-      </Button>
-   </children>
+<children>
+   <Label prefHeight="55.0" prefWidth="600.0" styleClass="header" stylesheets="@Style.css" />
+   <Button fx:id="firstBtn" layoutX="472.0" layoutY="161.0" mnemonicParsing="false" onAction="#go" prefHeight="42.0" prefWidth="70.0" styleClass="btn" stylesheets="@Style.css" text="далее" textFill="WHITE">
+      <font>
+         <Font name="Segoe UI Light" size="15.0" />
+      </font>
+   </Button>
+   <TextField fx:id="street" layoutX="59.0" layoutY="161.0" prefHeight="42.0" prefWidth="401.0" promptText="Введите название улицы..." styleClass="textField" stylesheets="@Style.css">
+      <font>
+         <Font name="Segoe UI Light" size="19.0" />
+      </font>
+   </TextField>
+   <TextField fx:id="part1" layoutX="-413.0" layoutY="133.0" prefHeight="42.0" prefWidth="401.0" promptText="Укажите границы участка дороги..." styleClass="textField" stylesheets="@Style.css">
+      <font>
+         <Font name="Segoe UI Light" size="19.0" />
+      </font>
+   </TextField>
+   <TextField fx:id="part2" layoutX="-413.0" layoutY="190.0" prefHeight="42.0" prefWidth="401.0" promptText="Укажите границы участка дороги..." styleClass="textField" stylesheets="@Style.css">
+      <font>
+         <Font name="Segoe UI Light" size="19.0" />
+      </font>
+   </TextField>
+   <Button fx:id="finalBtn" layoutX="-82.0" layoutY="241.0" mnemonicParsing="false" onAction="#goForward" prefHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@Style.css" text="далее" textFill="WHITE">
+      <font>
+         <Font name="Segoe UI Light" size="15.0" />
+      </font>
+   </Button>
+   <Button fx:id="prev" layoutX="-159.0" layoutY="241.0" mnemonicParsing="false" onAction="#prev" prefHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@Style.css" text="назад" textFill="WHITE">
+      <font>
+         <Font name="Segoe UI Light" size="15.0" />
+      </font>
+   </Button>
+</children>
 </AnchorPane>

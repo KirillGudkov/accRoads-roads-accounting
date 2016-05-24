@@ -8,10 +8,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import sample.Controller;
 import sample.DBConnection.DBConnection;
 import javafx.event.EventHandler;
+import sample.DialogModalWindow.DialogModalWindow;
+
 import java.sql.ResultSet;
 
 /**
@@ -22,9 +28,21 @@ public class InfoRoads {
     private String street;
     private String part1;
     private String part2;
+    private ResultSet result;
+    private EventHandler<ActionEvent> actionEvent;
+    private Pane paneForLoading = new Pane();
+    private DBConnection dbConnection = new DBConnection();
 
     @FXML
+    private AnchorPane anchor;
+    @FXML
     private Label side;
+    @FXML
+    private Pane paneForLogo;
+    @FXML
+    private Pane paneForLabels;
+    @FXML
+    private ImageView logo;
     @FXML
     private Label technicalCondition;
     @FXML
@@ -89,14 +107,9 @@ public class InfoRoads {
 
     /**
      *
-     * @throws Exception
-     */
-
-    /**
-     *
      */
     public InfoRoads () {
-        EventHandler<ActionEvent> actionEvent = listenMenu();
+        actionEvent = listenMenu();
         Platform.runLater(()->chooseAnotherPart.setOnAction(actionEvent));
         Platform.runLater(()->addRoad.setOnAction(actionEvent));
         Platform.runLater(()->removeRoad.setOnAction(actionEvent));
@@ -105,7 +118,57 @@ public class InfoRoads {
         Platform.runLater(()->copy.setOnAction(actionEvent));
         Platform.runLater(()->paste.setOnAction(actionEvent));
         Platform.runLater(()->about.setOnAction(actionEvent));
-        Platform.runLater(()->update.setOnAction(actionEvent));
+        Platform.runLater(() ->update.setOnAction(actionEvent));
+        Image image = new Image("file:resources/road-512.png");
+        Platform.runLater(() -> logo.setImage(image));
+    }
+
+    /**
+     *
+     */
+    public void showLoading() {
+        javafx.scene.image.Image image = new javafx.scene.image.Image("file:resources/loading.gif");
+        ImageView imageView = new ImageView(image);
+        imageView.setX(410);
+        imageView.setY(180);
+        Platform.runLater(()->paneForLoading.setStyle("-fx-background-color: white; -fx-min-width: 900px; -fx-min-height: 379px;"));
+        Platform.runLater(()->paneForLoading.setLayoutY(71));
+        Platform.runLater(() -> paneForLoading.getChildren().add(imageView));
+        Platform.runLater(()-> {anchor.getChildren().add(paneForLoading);});
+    }
+
+    /**
+     *
+     */
+    public void hideLoading() {
+        Platform.runLater(()->anchor.getChildren().remove(paneForLoading));
+    }
+
+    /**
+     *
+     */
+    public void showPaneForLabels () {
+        Platform.runLater(() -> paneForLabels.setVisible(true));
+    }
+
+    /**
+     *
+     */
+    public void hidePaneForLabels () {
+        Platform.runLater(() -> paneForLabels.setVisible(false));
+    }
+    /**
+     *
+     */
+    public void showPaneForLogo () {
+        Platform.runLater(()->paneForLogo.setVisible(true));
+    }
+
+    /**
+     *
+     */
+    public void hidePaneForLogo () {
+        Platform.runLater(()->paneForLogo.setVisible(false));
     }
 
     /**
@@ -147,22 +210,82 @@ public class InfoRoads {
             }
         };
     }
+
+
     public void showInfo () throws Exception{
-        DBConnection dbConnection = new DBConnection();
-        ResultSet result = dbConnection.sendRequest(street, part1, part2);
+        Thread resp = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    dbConnection.createConnection();
+                    result = dbConnection.sendRequest(street, part1, part2);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    try {
+                        DialogModalWindow dialogModalWindow = new DialogModalWindow();
+                        dialogModalWindow.showDialog(stage, "Ошибка подключения к базе данных");
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+                try {
+                    if (result.next()) {
+                            System.out.println(result.getClass());
+                            System.out.println(result.getString("TECHNICAL_CONDITION"));
+                            String tc = result.getString("TECHNICAL_CONDITION");
+                            String cc = result.getString("COSMETIC_CONDITION");
+                            String db = result.getString("DATE_BEGIN_OF_REPAIRS");
+                            String de = result.getString("DATE_END_OF_REPAIRS");
+                            String s = result.getString("STATUS");
+                            String m = result.getString("SPENT_MONEY");
+                            Platform.runLater(() -> {
+                                side.setText("ул." + street + ": " + "от ул." + part1 + " до ул." + part2);
+                                technicalCondition.setText(tc);
+                                cosmeticCondition.setText(cc);
+                                dateBegin.setText(db);
+                                dateEnd.setText(de);
+                                status.setText(s);
+                                money.setText(m + " рублей");
+                                hidePaneForLogo();
+                                showPaneForLabels();
+                            });
+                    }
+                    else {
+                        try {
+                            DialogModalWindow dialogModalWindow = new DialogModalWindow();
+                            dialogModalWindow.showDialog(stage, "Нет данных");
+                            hidePaneForLabels();
+                            showPaneForLogo();
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                try {
+                    dbConnection.closeConnection();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        Thread load = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    showLoading();
+                    resp.start();
+                    resp.join();
+                    hideLoading();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
-        side.setText("ул." + street + ": " + "от ул." + part1 + " до ул." + part2);
-        while (result.next()) {
-            technicalCondition.setText(result.getString("TECHNICAL_CONDITION"));
-            cosmeticCondition.setText(result.getString("COSMETIC_CONDITION"));
-            dateBegin.setText(result.getString("DATE_BEGIN_OF_REPAIRS"));
-            dateEnd.setText(result.getString("DATE_END_OF_REPAIRS"));
-            status.setText(result.getString("STATUS"));
-            money.setText(result.getString("SPENT_MONEY")+" рублей");
-        }
-        dbConnection.closeConnection();
+        load.start();
     }
-
 
     /**
      *

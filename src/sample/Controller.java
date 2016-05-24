@@ -12,10 +12,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import sample.DBConnection.DBConnection;
 import sample.info.InfoRoads;
 
 public class Controller {
     private Stage stage;
+    private DBConnection dbConnection;
     @FXML
     TextField street;
     @FXML
@@ -29,6 +31,12 @@ public class Controller {
     @FXML
     Button prev;
 
+    public void initialize() {
+        street.setText("Ленина");
+        part1.setText("Партизанская");
+        part2.setText("Лазо");
+    }
+
 //    private List<String> listOneBox = new ArrayList<>();
 //    private ObservableList<String> observableListOne = FXCollections.observableList(listOneBox);
 
@@ -40,6 +48,8 @@ public class Controller {
         this.stage = primaryStage;
     }
 
+    public void setConnection (DBConnection dbConnection) {this.dbConnection = dbConnection;}
+
     /**
      *
      * @param actionEvent
@@ -47,14 +57,12 @@ public class Controller {
     public void go(ActionEvent actionEvent) {
         if (!street.getText().isEmpty()) {
             ParallelTransition parallelTransition = new ParallelTransition();
-
             TranslateTransition animateText = new TranslateTransition(Duration.millis(300), street);
             TranslateTransition animateButton = new TranslateTransition(Duration.millis(300), firstBtn);
             animateText.setFromX(0);
             animateText.setToX(550);
             animateButton.setFromX(0);
             animateButton.setToX(550);
-
             TranslateTransition animatePart1 = new TranslateTransition(Duration.millis(500), part1);
             TranslateTransition animatePart2 = new TranslateTransition(Duration.millis(500), part2);
             TranslateTransition animateFinalBtn = new TranslateTransition(Duration.millis(500), finalBtn);
@@ -67,7 +75,6 @@ public class Controller {
             animateFinalBtn.setToX(510);
             animatePrev.setFromX(0);
             animatePrev.setToX(510);
-
             parallelTransition.getChildren().addAll(animateText, animateButton,
                                                     animateFinalBtn, animatePart1,
                                                     animatePart2, animatePrev);
@@ -87,15 +94,15 @@ public class Controller {
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root, 900, 500);
             InfoRoads infoRoads = fxmlLoader.getController();
+            infoRoads.setStage(stage);
             infoRoads.getStreet(street.getText());
             infoRoads.getPart1(part1.getText());
             infoRoads.getPart2(part2.getText());
-            infoRoads.showInfo();
             stage.setResizable(false);
             stage.setTitle("Сведения о дороге");
             stage.getIcons().add(new Image("file:resources/road-512.png"));
             stage.setScene(scene);
-            infoRoads.setStage(stage);
+            infoRoads.showInfo();
         }
     }
 

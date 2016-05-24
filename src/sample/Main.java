@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import sample.DBConnection.DBConnection;
 
 public class Main extends Application {
 
@@ -25,7 +26,11 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         Controller controller = fxmlLoader.getController();
         controller.setStage(primaryStage);
+        DBConnection dbConnection = new DBConnection();
+        dbConnection.setStage(primaryStage);
+        controller.setConnection(dbConnection);
         primaryStage.show();
+        System.out.println("Стейдж главного окна: "+primaryStage);
     }
 
     /**

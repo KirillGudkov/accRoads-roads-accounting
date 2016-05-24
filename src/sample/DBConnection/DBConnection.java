@@ -1,5 +1,8 @@
 package sample.DBConnection;
 
+import javafx.stage.Stage;
+import sample.DialogModalWindow.DialogModalWindow;
+
 import java.sql.*;
 
 /**
@@ -7,18 +10,25 @@ import java.sql.*;
  */
 public class DBConnection {
     private Connection connection;
+    private Stage stage;
+
+    /**
+     * @param stage
+     */
+    public void setStage (Stage stage) {
+        this.stage = stage;
+    }
 
     /**
      *
      * @throws Exception
      */
-    public DBConnection () throws Exception {
+    public void createConnection() throws Exception{
         Class.forName("org.h2.Driver").newInstance();
         connection = DriverManager.getConnection("jdbc:h2:file:K:/accRoads/" +
-                                                 "accRoads-roads-accounting-/src/" +
-                                                 "sample/roads", "user", "user");
+                "accRoads-roads-accounting-/src/" +
+                "sample/roads", "user", "user");
     }
-
     /**
      *
      * @param first
@@ -35,6 +45,7 @@ public class DBConnection {
                 "FROM ROADS AS a, ROADS AS b, ROADS AS c, CROSSING "+
                 "WHERE a.NAME = '"+first+"' and b.NAME = '"+second+"' and c.NAME = '"+third+"' " +
                 "and a.ID = CROSSING.F_ID and b.ID = CROSSING.S_ID and c.ID = CROSSING.T_ID;");
+        System.out.println("Запрос выполнен");
         return resultSet;
     }
 
