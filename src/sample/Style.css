@@ -11,19 +11,12 @@
 .btn:hover {
     -fx-background-color: #0066FF;
 }
-.combo {
-    -fx-mark-color:  #ffffff;
-    -fx-background-color: #6699FF;
-}
-.textField {
-    -fx-border-radius: 0px;
-}
+
 .menu .label {
     -fx-text-fill: white;
     -fx-font: "Segoe UI Light";
 
 }
-
 .menu-bar {
     -fx-background-color: rgba(0,0,0,0);
 }

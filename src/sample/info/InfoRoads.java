@@ -1,14 +1,17 @@
 package sample.info;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import sample.Controller;
 import sample.DBConnection.DBConnection;
+import javafx.event.EventHandler;
 import java.sql.ResultSet;
 
 /**
@@ -34,6 +37,24 @@ public class InfoRoads {
     private Label status;
     @FXML
     private Label money;
+    @FXML
+    private MenuItem chooseAnotherPart;
+    @FXML
+    private MenuItem addRoad;
+    @FXML
+    private MenuItem removeRoad;
+    @FXML
+    private MenuItem changeStatus;
+    @FXML
+    private MenuItem exit;
+    @FXML
+    private MenuItem copy;
+    @FXML
+    private MenuItem paste;
+    @FXML
+    private MenuItem about;
+    @FXML
+    private MenuItem update;
 
     /**
      * @param stage
@@ -70,11 +91,67 @@ public class InfoRoads {
      *
      * @throws Exception
      */
+
+    /**
+     *
+     */
+    public InfoRoads () {
+        EventHandler<ActionEvent> actionEvent = listenMenu();
+        Platform.runLater(()->chooseAnotherPart.setOnAction(actionEvent));
+        Platform.runLater(()->addRoad.setOnAction(actionEvent));
+        Platform.runLater(()->removeRoad.setOnAction(actionEvent));
+        Platform.runLater(()->changeStatus.setOnAction(actionEvent));
+        Platform.runLater(()->exit.setOnAction(actionEvent));
+        Platform.runLater(()->copy.setOnAction(actionEvent));
+        Platform.runLater(()->paste.setOnAction(actionEvent));
+        Platform.runLater(()->about.setOnAction(actionEvent));
+        Platform.runLater(()->update.setOnAction(actionEvent));
+    }
+
+    /**
+     *
+     * @return
+     */
+    public EventHandler<ActionEvent> listenMenu () {
+        return new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                MenuItem mItem = (MenuItem) event.getSource();
+                String element = mItem.getText();
+                if(element.equalsIgnoreCase("Выбрать другой участок дороги")){
+                    System.out.println("Вы нажали 'выбрать другой участок'");
+                }
+                if(element.equalsIgnoreCase("Добавить дорогу")){
+                    System.out.println("Вы нажали 'Добавить дорогу'");
+                }
+                if(element.equalsIgnoreCase("Удалить дорогу")){
+                    System.out.println("Вы нажали 'Удалить дорогу'");
+                }
+                if(element.equalsIgnoreCase("Изменить статус")){
+                    System.out.println("Вы нажали 'Изменить статус'");
+                }
+                if(element.equalsIgnoreCase("Выйти")){
+                    System.out.println("Вы нажали 'Выйти'");
+                }
+                if(element.equalsIgnoreCase("Скопировать")){
+                    System.out.println("Вы нажали 'Скопировать'");
+                }
+                if(element.equalsIgnoreCase("Вставить")){
+                    System.out.println("Вы нажали 'Вставить'");
+                }
+                if(element.equalsIgnoreCase("О программе")){
+                    System.out.println("Вы нажали 'О программе'");
+                }
+                if(element.equalsIgnoreCase("Обновить")){
+                    System.out.println("Вы нажали 'Обновить'");
+                }
+            }
+        };
+    }
     public void showInfo () throws Exception{
         DBConnection dbConnection = new DBConnection();
         ResultSet result = dbConnection.sendRequest(street, part1, part2);
 
-        side.setText("ул."+street+": "+"от ул."+part1+" до ул."+part2);
+        side.setText("ул." + street + ": " + "от ул." + part1 + " до ул." + part2);
         while (result.next()) {
             technicalCondition.setText(result.getString("TECHNICAL_CONDITION"));
             cosmeticCondition.setText(result.getString("COSMETIC_CONDITION"));
@@ -85,6 +162,8 @@ public class InfoRoads {
         }
         dbConnection.closeConnection();
     }
+
+
     /**
      *
      * @param actionEvent

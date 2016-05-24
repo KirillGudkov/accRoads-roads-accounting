@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.info.InfoRoads">
@@ -83,24 +82,27 @@
             <Font name="Segoe UI Light" size="13.0" />
          </font>
       </Label>
-      <MenuBar id="menu" prefHeight="25.0" prefWidth="600.0" styleClass="menu" stylesheets="@../Style.css">
+      <MenuBar id="menu" fx:id="menu" prefHeight="25.0" prefWidth="600.0" styleClass="menu" stylesheets="@../Style.css">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="File" fx:id="file">
             <items>
-              <MenuItem mnemonicParsing="false" text="Выбрать другой участок дороги" />
-               <MenuItem mnemonicParsing="false" text="Добавить дорогу" />
-               <MenuItem mnemonicParsing="false" text="Удалить дорогу" />
-               <MenuItem mnemonicParsing="false" text="Изменить статус" />
+              <MenuItem mnemonicParsing="false" text="Выбрать другой участок дороги" fx:id="chooseAnotherPart"/>
+               <MenuItem mnemonicParsing="false" text="Добавить дорогу" fx:id="addRoad"/>
+               <MenuItem mnemonicParsing="false" text="Удалить дорогу" fx:id="removeRoad"/>
+               <MenuItem mnemonicParsing="false" text="Изменить статус" fx:id="changeStatus"/>
+                <MenuItem mnemonicParsing="false" text="Выйти" fx:id="exit"/>
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Edit" fx:id="edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" text="Скопировать" fx:id="copy"/>
+              <MenuItem mnemonicParsing="false" text="Вставить" fx:id="paste"/>
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="Help" fx:id="help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" text="О программе" fx:id="about"/>
+                <MenuItem mnemonicParsing="false" text="Обновить" fx:id="update"/>
             </items>
           </Menu>
         </menus>

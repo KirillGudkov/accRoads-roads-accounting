@@ -68,18 +68,11 @@ public class Controller {
             animatePrev.setFromX(0);
             animatePrev.setToX(510);
 
-            parallelTransition.getChildren().addAll(animateText, animateButton, animateFinalBtn, animatePart1, animatePart2, animatePrev);
+            parallelTransition.getChildren().addAll(animateText, animateButton,
+                                                    animateFinalBtn, animatePart1,
+                                                    animatePart2, animatePrev);
             parallelTransition.play();
         }
-//        FXMLLoader fxmlLoader = new FXMLLoader();
-//        fxmlLoader.setLocation(getClass().getResource("../info/InfoRoads.fxml"));
-//        Parent root = fxmlLoader.load();
-//        Scene scene = new Scene(root, 600, 350);
-//        InfoRoads infoRoads = new InfoRoads();
-//        stage.setResizable(false);
-//        stage.setTitle("Сведения о дороге");
-//        stage.setScene(scene);
-//        infoRoads.setStage(stage);
     }
 
     /**

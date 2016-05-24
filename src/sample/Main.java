@@ -9,6 +9,11 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    /**
+     *
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -23,6 +28,10 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
