@@ -15,9 +15,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import sample.Controller;
 import sample.DBConnection.DBConnection;
+import sample.addRoad.addRoad;
 import javafx.event.EventHandler;
 import sample.DialogModalWindow.DialogModalWindow;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 
 /**
@@ -180,11 +182,32 @@ public class InfoRoads {
             public void handle(ActionEvent event) {
                 MenuItem mItem = (MenuItem) event.getSource();
                 String element = mItem.getText();
+
                 if(element.equalsIgnoreCase("Выбрать другой участок дороги")){
                     System.out.println("Вы нажали 'выбрать другой участок'");
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("../sample.fxml"));
+                    Parent root = null;
+                    try {
+                        root = fxmlLoader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Scene scene = new Scene(root, 600, 350);
+                    Controller controller = fxmlLoader.getController();
+                    stage.setResizable(false);
+                    stage.setTitle("Road Accounting");
+                    stage.setScene(scene);
+                    controller.setStage(stage);
                 }
                 if(element.equalsIgnoreCase("Добавить дорогу")){
                     System.out.println("Вы нажали 'Добавить дорогу'");
+                    addRoad addRoad = new addRoad();
+                    try {
+                        addRoad.showDialog(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(element.equalsIgnoreCase("Удалить дорогу")){
                     System.out.println("Вы нажали 'Удалить дорогу'");
@@ -194,6 +217,7 @@ public class InfoRoads {
                 }
                 if(element.equalsIgnoreCase("Выйти")){
                     System.out.println("Вы нажали 'Выйти'");
+                    stage.close();
                 }
                 if(element.equalsIgnoreCase("Скопировать")){
                     System.out.println("Вы нажали 'Скопировать'");
@@ -213,78 +237,33 @@ public class InfoRoads {
 
 
     public void showInfo () throws Exception{
-        Thread resp = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    dbConnection.createConnection();
-                    result = dbConnection.sendRequest(street, part1, part2);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    try {
-                        DialogModalWindow dialogModalWindow = new DialogModalWindow();
-                        dialogModalWindow.showDialog(stage, "Ошибка подключения к базе данных");
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                }
-                try {
-                    if (result.next()) {
-                            System.out.println(result.getClass());
-                            System.out.println(result.getString("TECHNICAL_CONDITION"));
-                            String tc = result.getString("TECHNICAL_CONDITION");
-                            String cc = result.getString("COSMETIC_CONDITION");
-                            String db = result.getString("DATE_BEGIN_OF_REPAIRS");
-                            String de = result.getString("DATE_END_OF_REPAIRS");
-                            String s = result.getString("STATUS");
-                            String m = result.getString("SPENT_MONEY");
-                            Platform.runLater(() -> {
-                                side.setText("ул." + street + ": " + "от ул." + part1 + " до ул." + part2);
-                                technicalCondition.setText(tc);
-                                cosmeticCondition.setText(cc);
-                                dateBegin.setText(db);
-                                dateEnd.setText(de);
-                                status.setText(s);
-                                money.setText(m + " рублей");
-                                hidePaneForLogo();
-                                showPaneForLabels();
-                            });
-                    }
-                    else {
-                        try {
-                            DialogModalWindow dialogModalWindow = new DialogModalWindow();
-                            dialogModalWindow.showDialog(stage, "Нет данных");
-                            hidePaneForLabels();
-                            showPaneForLogo();
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                try {
-                    dbConnection.closeConnection();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        Thread load = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    showLoading();
-                    resp.start();
-                    resp.join();
-                    hideLoading();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        dbConnection.createConnection();
+        result = dbConnection.sendRequest(street, part1, part2);
 
-        load.start();
+        if (result.next()) {
+            String tc = result.getString("TECHNICAL_CONDITION");
+            String cc = result.getString("COSMETIC_CONDITION");
+            String db = result.getString("DATE_BEGIN_OF_REPAIRS");
+            String de = result.getString("DATE_END_OF_REPAIRS");
+            String s = result.getString("STATUS");
+            String m = result.getString("SPENT_MONEY");
+            side.setText("ул." + street + ": " + "от ул." + part1 + " до ул." + part2);
+            technicalCondition.setText(tc);
+            cosmeticCondition.setText(cc);
+            dateBegin.setText(db);
+            dateEnd.setText(de);
+            status.setText(s);
+            money.setText(m + " рублей");
+            hidePaneForLogo();
+            showPaneForLabels();
+        }
+        else {
+            DialogModalWindow dialogModalWindow = new DialogModalWindow();
+            dialogModalWindow.showDialog(stage, "Нет данных");
+            hidePaneForLabels();
+            showPaneForLogo();
+        }
+        dbConnection.closeConnection();
     }
 
     /**
