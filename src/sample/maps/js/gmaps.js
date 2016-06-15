@@ -525,8 +525,8 @@ var GMaps = (function(global) {
         options.rightclick.apply(this, [e]);
       }
 
-      if(window.context_menu[self.el.id]['map'] != undefined) {
-        self.buildContextMenu('map', e);
+      if(window.context_menu[self.el.id]['sample.info.map'] != undefined) {
+        self.buildContextMenu('sample.info.map', e);
       }
     });
 

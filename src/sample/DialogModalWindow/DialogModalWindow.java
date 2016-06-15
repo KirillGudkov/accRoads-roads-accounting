@@ -19,7 +19,9 @@ import javafx.stage.Window;
 public class DialogModalWindow {
     private Stage stage;
     @FXML
-    private Button btnForward;
+    private Button btnOk;
+    @FXML
+    private Button btnCancel;
     @FXML
     private Label label;
     @FXML
@@ -30,7 +32,7 @@ public class DialogModalWindow {
      * @param owner
      * @throws Exception
      */
-    public void showDialog (Window owner, String error) throws Exception {
+    public void showDialog (Window owner, String error, String title) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../DialogModalWindow/DialogModalWindow.fxml"));
         loader.setController(this);
         Parent root = (Parent)loader.load();
@@ -41,7 +43,7 @@ public class DialogModalWindow {
         Platform.runLater(()->{stage.setMinHeight(250);});
         Platform.runLater(()->{stage.setMaxWidth(500);});
         Platform.runLater(()->{stage.getIcons().add(new Image("file:resources/error.png"));});
-        Platform.runLater(()->{stage.setTitle("error");});
+        Platform.runLater(()->{stage.setTitle(title);});
         Platform.runLater(()->{stage.initModality(Modality.WINDOW_MODAL);});
         Platform.runLater(()->{stage.setResizable(false);});
         Platform.runLater(()->{stage.initOwner(owner);});
@@ -54,8 +56,13 @@ public class DialogModalWindow {
      *
      * @param event
      */
-    public void goForward(ActionEvent event) {
-        Stage stage = (Stage) btnForward.getScene().getWindow();
+    public void ok(ActionEvent event) {
+        Stage stage = (Stage) btnOk.getScene().getWindow();
+        stage.close();
+    }
+
+    public void cancel(ActionEvent event) {
+        Stage stage = (Stage) btnCancel.getScene().getWindow();
         stage.close();
     }
 }

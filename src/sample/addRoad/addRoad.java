@@ -40,7 +40,7 @@ public class addRoad {
         stage.setScene(new Scene(root));
         stage.setMinHeight(400);
         stage.setMaxWidth(600);
-        stage.getIcons().add(new Image("file:resources/error.png"));
+        stage.getIcons().add(new Image("file:resources/add.png"));
         stage.setTitle("Добавить дорогу");
         stage.initModality(Modality.WINDOW_MODAL);
         stage.setResizable(false);
@@ -52,6 +52,7 @@ public class addRoad {
         spentMoney.setMinWidth(264);
         paneForField.getChildren().add(spentMoney);
         System.out.println(owner);
+        stage.centerOnScreen();
         stage.show();
     }
     /**

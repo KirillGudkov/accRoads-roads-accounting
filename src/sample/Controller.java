@@ -92,7 +92,7 @@ public class Controller {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("info/InfoRoads.fxml"));
             Parent root = fxmlLoader.load();
-            Scene scene = new Scene(root, 900, 500);
+            Scene scene = new Scene(root, 900, 450);
             InfoRoads infoRoads = fxmlLoader.getController();
             infoRoads.setStage(stage);
             infoRoads.getStreet(street.getText());
@@ -102,6 +102,7 @@ public class Controller {
             stage.setTitle("Сведения о дороге");
             stage.getIcons().add(new Image("file:resources/road-512.png"));
             stage.setScene(scene);
+            stage.centerOnScreen();
             infoRoads.showInfo();
         }
     }

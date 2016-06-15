@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.info.InfoRoads">
+<AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.info.InfoRoads">
    <children>
       <Pane fx:id="paneForLogo" layoutX="298.0" layoutY="129.0" prefHeight="286.0" prefWidth="304.0" visible="false">
          <children>
             <ImageView fx:id="logo" fitHeight="286.0" fitWidth="304.0" layoutX="9.0" opacity="0.45" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
-      <Button fx:id="btnForward" layoutX="816.0" layoutY="454.0" mnemonicParsing="false" onAction="#goForward" prefHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@../Style.css" text="далее" textFill="WHITE">
+      <Button fx:id="btnForward" layoutX="816.0" layoutY="407.0" mnemonicParsing="false" onAction="#goForward" prefHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@../Style.css" text="далее" textFill="WHITE">
          <font>
             <Font name="Segoe UI Light" size="15.0" />
          </font>
       </Button>
       <Label prefHeight="70.0" prefWidth="900.0" styleClass="header" stylesheets="@../Style.css" />
-      <Button fx:id="btnBack" layoutX="14.0" layoutY="454.0" mnemonicParsing="false" onAction="#goBack" prefHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@../Style.css" text="назад" textFill="WHITE">
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="407.0" mnemonicParsing="false" onAction="#goBack" prefHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@../Style.css" text="назад" textFill="WHITE">
          <font>
             <Font name="Segoe UI Light" size="15.0" />
          </font>
@@ -29,32 +30,32 @@
             <Font name="Segoe UI Light" size="33.0" />
          </font>
       </Label>
-      <Label fx:id="technicalCondition" layoutX="400.0" layoutY="77.0" prefHeight="24.0" prefWidth="280.0">
+      <Label fx:id="technicalCondition" layoutX="298.0" layoutY="77.0" prefHeight="24.0" prefWidth="280.0">
          <font>
             <Font name="Segoe UI Light" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="cosmeticCondition" layoutX="400.0" layoutY="129.0" prefHeight="24.0" prefWidth="280.0">
+      <Label fx:id="cosmeticCondition" layoutX="298.0" layoutY="129.0" prefHeight="24.0" prefWidth="280.0">
          <font>
             <Font name="Segoe UI Light" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="dateBegin" layoutX="400.0" layoutY="179.0" prefHeight="24.0" prefWidth="280.0">
+      <Label fx:id="dateBegin" layoutX="298.0" layoutY="179.0" prefHeight="24.0" prefWidth="280.0">
          <font>
             <Font name="Segoe UI Light" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="dateEnd" layoutX="400.0" layoutY="226.0" prefHeight="24.0" prefWidth="280.0">
+      <Label fx:id="dateEnd" layoutX="298.0" layoutY="226.0" prefHeight="24.0" prefWidth="280.0">
          <font>
             <Font name="Segoe UI Light" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="status" layoutX="400.0" layoutY="287.0" prefHeight="24.0" prefWidth="280.0">
+      <Label fx:id="status" layoutX="298.0" layoutY="280.0" prefHeight="24.0" prefWidth="280.0">
          <font>
             <Font name="Segoe UI Light" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="money" layoutX="400.0" layoutY="348.0" prefHeight="24.0" prefWidth="280.0">
+      <Label fx:id="money" layoutX="298.0" layoutY="331.0" prefHeight="24.0" prefWidth="280.0">
          <font>
             <Font name="Segoe UI Light" size="13.0" />
          </font>
@@ -64,9 +65,8 @@
           <Menu fx:id="file" mnemonicParsing="false" text="File">
             <items>
               <MenuItem fx:id="chooseAnotherPart" mnemonicParsing="false" text="Выбрать другой участок дороги" />
-               <MenuItem fx:id="addRoad" mnemonicParsing="false" text="Добавить дорогу" />
-               <MenuItem fx:id="removeRoad" mnemonicParsing="false" text="Удалить дорогу" />
-               <MenuItem fx:id="changeStatus" mnemonicParsing="false" text="Изменить статус" />
+                <MenuItem fx:id="refresh" mnemonicParsing="false" text="Обновить" />
+                <MenuItem fx:id="print" mnemonicParsing="false" text="Составить отчёт и распечатать" />
                 <MenuItem fx:id="exit" mnemonicParsing="false" text="Выйти" />
             </items>
           </Menu>
@@ -74,17 +74,20 @@
             <items>
               <MenuItem fx:id="copy" mnemonicParsing="false" text="Скопировать" />
               <MenuItem fx:id="paste" mnemonicParsing="false" text="Вставить" />
+                <MenuItem fx:id="changeStatus" mnemonicParsing="false" text="Редактировать дорогу" />
+                <MenuItem fx:id="addRoad" mnemonicParsing="false" text="Добавить дорогу" />
+                <MenuItem fx:id="removeRoad" mnemonicParsing="false" text="Удалить дорогу" />
             </items>
           </Menu>
           <Menu fx:id="help" mnemonicParsing="false" text="Help">
             <items>
               <MenuItem fx:id="about" mnemonicParsing="false" text="О программе" />
-                <MenuItem fx:id="update" mnemonicParsing="false" text="Обновить" />
+                <MenuItem fx:id="update" mnemonicParsing="false" text="Обновить приложение" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
-      <Pane fx:id="paneForLabels" layoutX="14.0" layoutY="77.0" prefHeight="362.0" prefWidth="304.0" visible="false">
+      <Pane fx:id="paneForLabels" layoutX="14.0" layoutY="77.0" prefHeight="324.0" prefWidth="304.0" visible="false">
          <children>
             <Label prefHeight="24.0" prefWidth="264.0" text="Техническое состояние дорожного полотна:">
                <font>

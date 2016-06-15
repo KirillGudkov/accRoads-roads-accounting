@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane maxHeight="400.0" maxWidth="350.0" minHeight="400.0" minWidth="350.0" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label prefHeight="70.0" prefWidth="350.0" styleClass="header" stylesheets="@../Style.css" />
+      <Button fx:id="btnForward" layoutX="252.0" layoutY="362.0" mnemonicParsing="false" onAction="#ok" prefHeight="32.0" prefWidth="76.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@../Style.css" text="далее" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Light" size="15.0" />
+         </font>
+      </Button>
+      <Label fx:id="about" alignment="CENTER" layoutX="62.0" layoutY="86.0" prefHeight="255.0" prefWidth="228.0" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Segoe UI Light" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -30,7 +30,6 @@ public class Main extends Application {
         dbConnection.setStage(primaryStage);
         controller.setConnection(dbConnection);
         primaryStage.show();
-        System.out.println("Стейдж главного окна: "+primaryStage);
     }
 
     /**

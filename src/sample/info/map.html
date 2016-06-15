@@ -16,20 +16,19 @@
 
         }
 
-        function initialize (var side) {
+        function initialize () {
             var map = new GMaps({
                 el: '#map_canvas',
-                lat: -12.043333,
-                lng: -77.028333,
+                lat: 50.255453,
+                lng: 127.566760,
+                zoom: 17,
                 disableDefaultUI: true,
                 panControl: false,
 
 
                 click: function(e) {
                     var myLocate = e.latLng;
-                    map.removeMarker({
-                        name: "marker"
-                    });
+                    map.removeMarkers();
                     map.addMarker({
                         position: myLocate,
                         name: "marker",

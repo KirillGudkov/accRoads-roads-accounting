@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
 <?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
 
 
+<?import javafx.scene.layout.AnchorPane?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label prefHeight="70.0" prefWidth="500.0" styleClass="header" stylesheets="@../Style.css" />
-      <Button fx:id="btnForward" layoutX="416.0" layoutY="204.0" mnemonicParsing="false" onAction="#goForward" prefHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@../Style.css" text="далее" textFill="WHITE">
+      <Button fx:id="btnOk" layoutX="416.0" layoutY="218.0" mnemonicParsing="false" onAction="#ok" prefHeight="32.0" maxHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@../Style.css" text="Ок" textFill="WHITE"/>
+      <Button fx:id="btnCancel" layoutX="330.0" layoutY="218.0" mnemonicParsing="false" onAction="#cancel" prefHeight="32.0" maxHeight="32.0" prefWidth="70.0" style="-fx-border-style: none;" styleClass="btn" stylesheets="@../Style.css" text="Отмена" textFill="WHITE">
          <font>
             <Font name="Segoe UI Light" size="15.0" />
          </font>
